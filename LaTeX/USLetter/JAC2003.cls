@@ -14,15 +14,20 @@
 %                                                 John Poole
 %                                                 March 2000
 
-
 %  JAC2001.cls is a modified version of JAC2000.cls to produce indented
 %  first paragraphs after section, subsection and subsubsection headings.
 %
 %                                                 Martin Comyn  April 2001
 
-\def\fileversion{1.2}
-\def\filedate{2003/03/10}
-\def\docdate {2003/03/10}
+%  This is a modified version of JAC2003.cls to adjust space around
+%  section and subsection headers to be more consistent with JACOW Word
+%  templates.
+%
+%                                                 Todd Satogata  March 2011
+
+\def\fileversion{1.3}
+\def\filedate{2011/03/06}
+\def\docdate {2011/03/06}
 
 \newlength{\dsep}
 \newlength{\dwid}
@@ -133,7 +138,7 @@
 \def\section{\secdef\@sectionb\@sections}
 \def\@sectionb[#1]#2{\@sections{#2}}
 \def\@sections#1{\@startsection {section}{1}{\z@}
-                {2.8ex plus 0.8ex minus .1ex}{1.5ex plus .2ex}
+                {2.0ex plus 0.8ex minus .1ex}{1.0ex plus .2ex}
                 {\large\bf\boldmath\centering}{\uppercase{#1}}}
 % Should there be any problem with this, we can revert to the following
 % but then the onus is on the user to type the argument of \section in
@@ -142,8 +147,8 @@
 %\def\section{\@startsection {section}{1}{\z@}{2.8ex plus 0.8ex minus.1ex}
 %                          {1.5ex plus .2ex}{\large\bf\boldmath\centering}}
  
-\def\subsection{\@startsection{subsection}{2}{\z@}{2.6ex plus .8ex minus
-   .17ex}{1.2ex plus .17ex}{\large\it}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{1.4ex plus .8ex minus
+   .17ex}{0.8ex plus .17ex}{\large\it}}
 \def\subsubsection{\@startsection{subsubsection}{3}{\parindent}
  {2.5ex plus .7ex minus .17ex}{-1em}{\normalsize\bf}}
 \def\paragraph{\@startsection
