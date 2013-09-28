@@ -1,13 +1,16 @@
-\documentclass{JAC2003}
+\documentclass[a4paper]{JAC2003}
 
 %%
-%%  This file was updated in April 2009 by J. Poole to be in line with Word tempaltes
+%%  This file was updated in March 2011 by T. Satogata to be in line with Word templates.
 %%
 %%  Use \documentclass[boxit]{JAC2003}
 %%  to draw a frame with the correct margins on the output.
 %%
 %%  Use \documentclass[acus]{JAC2003}
 %%  for US letter paper layout
+%%
+%%  Use \documentclass[a4paper]{JAC2003}
+%%  for A4 paper layout
 %%
 
 \usepackage{graphicx}
@@ -20,10 +23,10 @@
 \setlength{\titleblockheight}{27mm}
 
 \begin{document}
-\title{PREPARATION OF PAPERS FOR JACoW CONFERENCES\thanks{Work supported by ...}}
+\title{PREPARATION OF PAPERS FOR JACoW CONFERENCES\thanks{ Work supported by ...}}
 
 \author{J. Poole, C. Petit-Jean-Genaz, CERN, Geneva, Switzerland\\
-C. Eyberger\thanks{cee@aps.anl.gov}, ANL, Argonne, IL 60439, USA}
+C.E. Eyberger\thanks{ cee@aps.anl.gov}, ANL, Argonne, IL 60439, USA}
 
 \maketitle
 
@@ -40,12 +43,10 @@ C. Eyberger\thanks{cee@aps.anl.gov}, ANL, Argonne, IL 60439, USA}
 \end{abstract}
 
 \section{SUBMISSION OF PAPERS}
-
 Each author should submit the PostScript and all of the source files (text and figures), 
 to enable the paper to be reconstructed if there are processing difficulties.
 
 \section{MANUSCRIPTS}
-
 Templates are provided for recommended software and authors are
 advised to use them. Please consult the individual conference help pages if questions
 arise.
@@ -57,23 +58,23 @@ requirements. Manuscripts should have:
 \begin{Itemize}
     \item  Either A4 (21.0\,cm~$\times$~29.7\,cm; 8.27\,in~$\times$~11.69\,in) or US
            letter size (21\,cm~$\times$~27.9\,cm; 8.5\,in~$\times$~11.0\,in) paper.
-    \item  Single spaced text in two columns of 82.5\,mm (3.25\,in) with 5.0\,mm
-           (0.2\,in) separation.
+    \item  {\it Single-spaced} text in two columns of 82.5\,mm (3.25\,in) with 5.3\,mm
+           (0.2\,in) separation. Newer versions of Word (2007, 2010) have a default spacing
+           of 1.5 lines; authors must change this to 1 line.
     \item  The text located within the margins specified in Table~\ref{l2ea4-t1}
-           to facilitate electronic processing of the PostScript file.
+           to facilitate electronic processing of the PDF file.
 \end{Itemize}
-
 \begin{table}[hbt]
    \centering
-   \caption{Margin specifications}
+   \caption{Margin Specifications}
    \begin{tabular}{lcc}
        \toprule
        \textbf{Margin} & \textbf{A4 Paper} & \textbf{US Letter Paper} \\ 
        \midrule
-           Top         & 37\,mm             & 19\,mm (0.75\,in)        \\
-          Bottom       & 19\,mm             & 19\,mm (0.75\,in)        \\
-           Left        & 20\,mm             & 20\,mm (0.79\,in)        \\
-           Right       & 20\,mm             & 26\,mm (1.02\,in)        \\
+           Top         & 37\,mm (1.46\,in)            & 0.75\,in (19\,mm)        \\
+          Bottom     & 19\,mm (0.75\,in)            & 0.75\,in (19\,mm)        \\
+           Left         & 20\,mm (0.79\,in)            & 0.79\,in (20\,mm)        \\
+           Right       & 20\,mm (0.79\,in)            & 1.02\,in (26\,mm)        \\
        \bottomrule
    \end{tabular}
    \label{l2ea4-t1}
@@ -83,7 +84,7 @@ The layout of the text on the page is illustrated in
 Fig.~\ref{l2ea4-f1}. Note that the paper's title and the author list should be the width of the
 full page.Tables and figures may span the whole 170\,mm page width,
 if desired (see Fig.~\ref{l2ea4-f2}), but full-width figures should be placed at
-either the top or bottom of a page to ensure a proper flow of the text (Word only).
+either the top or bottom of a page to ensure a proper flow of the text (Word templates only).
 
 \begin{figure}[htb]
    \centering
@@ -103,7 +104,7 @@ fonts. In Word use only Symbol and, depending on your platform, Times or Times N
     \centering
     \includegraphics*[width=168mm]{JACpic2v2.eps}
     \caption{Example of a full-width figure showing the JACoW Team at their annual meeting in 2008. 
-    The figure carries a multi-line caption which has to be justified, rather than centred.}
+    The figure carries a multi-line caption which has to be justified, rather than centered.}
     \label{l2ea4-f2}
 \end{figure*}
 
@@ -137,6 +138,10 @@ column. Subsection headings should appear
 directly above the text -- there should never be a column break between a
 heading and the following paragraph.
 
+\vspace*{6pt} {\bf Third-level Heading} is a new style, but authors must
+bold text themselves; it should be used sparingly. See Table 2 for its
+style details.
+
 \subsection{Paragraph Text}
 
 Paragraphs should use 10\,pt font and be justified (touch each side) in
@@ -163,7 +168,7 @@ package to format the tables.
 A simple way to introduce figures into a Word document is to place them inside a table which has no borders. This is done in Word as follows:
 \begin{Itemize}
 \item	Insert a continuous section break.
-\item	Insert two empty lines (will make subsequent editing easier).
+\item	Insert two empty lines (makes later editing easier).
 \item	Insert another continuous section break.
 \item	Click between the two section breaks and Format $\rightarrow$ columns $\rightarrow$ Single.
 \item	Table $\rightarrow$ Insert single column, two row table.
@@ -201,7 +206,7 @@ affiliations and e-mail addresses. A nonnumeric sequence of characters (*,
 references section and use the normal numeric sequencing.
 
 Word users--do not use Word's footnote feature (\textbf{Insert, Footnote}) to insert
-footnotes as this will create formatting problems. Instead, insert footnotes manually in a text box at the bottom of the first column with a line at the top of the text box to separate the footnotes from the rest of the paper's text.  The easiest way to do this is to copy the text box from the JACoW template and paste it into your own document.  These 'pseudo footnotes' in the text box should only appear at the bottom of the first column on the first page.
+footnotes as this will create formatting problems. Instead, insert footnotes manually in a text box at the bottom of the first column with a line at the top of the text box to separate the footnotes from the rest of the paper's text.  The easiest way to do this is to copy the text box from the JACoW template and paste it into your own document.  These 'pseudo footnotes' in the text box should only appear at the bottom of the first column on the first page~\cite{exampl-ref2}.
 
 \subsection{Acronyms}
 
@@ -209,48 +214,8 @@ Acronyms should be defined the first time they appear.
 
 \section{STYLES}
 
-Table~\ref{style-tab} summarises the fonts and spacings used in the styles of
+Table~\ref{style-tab} summarizes the fonts and spacings used in the styles of
 a JACoW template (these are implemented in the \LaTeX\ class file).
-
-\begin{table}
-    \setlength\tabcolsep{4pt}
-    \caption{Summary of Styles}
-    \label{style-tab}
-    \begin{tabular}{llcc}
-        \toprule
-        \textbf{Style} & \textbf{Font}               & \textbf{Space}  & \textbf{Space} \\
-                       &                             & \textbf{Before} & \textbf{After} \\ 
-        \midrule
-         Title         & 14\,pt                      & 0\,pt           & 3\,pt  \\
-                       & Upper case except for       &                 &      \\
-                       & required lower case letters &                 &      \\   %corrected 080515 vrws requred 
-                       & Bold                        &                 &      \\ 
-         \midrule
-          Author list  & 12\,pt                      & 9\,pt           & 12\,pt \\
-                       & Upper and Lower case        &                 &      \\ 
-         \midrule
-         Section       & 12\,pt                      & 9\,pt           & 3\,pt  \\
-         heading       & Uppercase                   &                 &      \\
-                       & bold                        &                 &      \\ 
-        \midrule
-         Subsection    & 12\,pt                      & 6\,pt           & 3\,pt  \\
-         heading       & Initial Caps                &                 &      \\
-                       & Italic                      &                 &      \\ 
-        \midrule
-         Figure        & 10\,pt                      & 3\,pt           & 6\,pt  \\
-         Captions      &                             &                 &      \\
-        \midrule
-         Table         & 10\,pt                      & 3\,pt           & 3\,pt  \\
-         Captions      &                             &                 &      \\
-        \midrule
-         Equations     & 10\,pt base font            & 12\,pt          & 12\,pt \\
-        \midrule
-         References    & 10\,pt, justified with      & 0\,pt           & 0\,pt  \\
-                       & 7\,mm hanging indent          &                 &      \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
 
 \section{PAGE NUMBERS}
 
@@ -261,7 +226,7 @@ when the final proceedings are produced.
 
 Templates and examples can be retrieved through Web browsers like Firefox
 and Internet Explorer by saving to disk. See your local documentation for
-details of how to do this.
+details of how to do this~\cite{exampl-ref3}.
 
 Template documents for the recommended word processing software are
 available from the JACoW Website and exist for
@@ -269,18 +234,18 @@ available from the JACoW Website and exist for
 
 Use the correct templates for  your paper size and version of Word.
 Do not transport Microsoft Word documents across platforms, e.g.
-Mac~$\leftrightarrow$~PC.
+Mac~$\leftrightarrow$~PC. When saving a Word 2010 file (PC), be sure
+to click `Embed fonts' in the Save options. Fonts are embedded by default when printing to Postscript or PDF on Mac OSX.
 
-Please see the help files for instructions  on  how to
-install templates in your Microsoft templates folder.
+Please see the information and help files for authors on the JACoW.org web site
+for instructions  on  how to install templates in your Microsoft templates folder.
 
 \section{CHECKLIST FOR ELECTRONIC PUBLICATION}
 
 \begin{Itemize}
     \item  Use only Times or Times New Roman (standard, bold or italic) and Symbol 
     			fonts for text -- 10\,pt minimum except References which can be 9\,pt or 10\,pt.
-    \item  Figures should use Times or Times New Roman (standard, bold or italic) and Symbol fonts when possible
-            -- 6\,pt minimum.
+    \item  Figures should use Times or Times New Roman (standard, bold or italic) and Symbol fonts when possible~-- 6\,pt minimum.
     \item  Check that the PostScript file prints correctly.
     \item  Check that there are no page numbers.
     \item  Check that the margins on the printed version are within $\pm$1\,mm of the specification.
@@ -288,20 +253,72 @@ install templates in your Microsoft templates folder.
            \texttt{boxit} option.
 \end{Itemize}
 
+\vspace*{-20pt}
+\begin{table}[h]
+    \setlength\tabcolsep{4pt}
+    \caption{Summary of Styles}
+    \label{style-tab}
+    \begin{tabular}{llcc}
+        \toprule
+        \textbf{Style} & \textbf{Font}               & \textbf{Space}  & \textbf{Space} \\
+                       &                             & \textbf{Before} & \textbf{After} \\ 
+        \midrule
+         Heading 1,        & 14\,pt                      & 0\,pt           & 3\,pt  \\
+          PaperTitle             & Upper case except for       &                 &      \\
+                       & required lower case letters &                 &      \\   %corrected 080515 vrws requred 
+                       & Bold                        &                 &      \\ 
+         \midrule
+          Author list  & 12\,pt                      & 9\,pt           & 12\,pt \\
+                       & Upper and Lower case        &                 &      \\ 
+         \midrule
+         Heading 2, & 12\,pt                      & 9\,pt           & 3\,pt  \\
+         Section       & Uppercase                   &                 &      \\
+         Heading              & bold                        &                 &      \\ 
+        \midrule
+         Heading 3,   & 12\,pt                      & 6\,pt           & 3\,pt  \\
+         Subsection       & Initial Caps                &                 &      \\
+         Heading              & Italic                      &                 &      \\ 
+        \midrule
+         Third-level   & 10\,pt                      & 6\,pt           & 0\,pt  \\
+         Heading       & Initial Caps                &                 &      \\
+                             & Bold                      &                 &      \\ 
+        \midrule
+         Figure        & 10\,pt                      & 3\,pt           & 6\,pt  \\
+         Captions      &                             &                 &      \\
+        \midrule
+         Table         & 10\,pt                      & 3\,pt           & 3\,pt  \\
+         Captions      &                             &                 &      \\
+        \midrule
+         Equations     & 10\,pt base font            & 12\,pt          & 12\,pt \\
+        \midrule
+         References    & 10\,pt, justified with      & 0\,pt           & 0\,pt  \\
+                       & 0.25'' hanging indent          &                 &      \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{ACKNOWLEDGMENT}
+Any acknowledgment should be in a separate section directly preceding
+the References section.
+
 \begin{thebibliography}{9}   % Use for  1-9  references
 %\begin{thebibliography}{99} % Use for 10-99 references
 
 \bibitem{accelconf-ref}
-C. Petit-Jean-Genaz and J. Poole, ``JACoW, A service to the Accelerator Community'',
-EPAC'04, Lucerne, July 2004, THZCH03,  p.~249, \texttt{http://www.JACoW.org}.
+C. Petit-Jean-Genaz and J. Poole, ``JACoW, A service to the Accelerator Community,''
+EPAC'04, Lucerne, July 2004, THZCH03,  p.~249, \texttt{http://www.JACoW.org}
 
 \bibitem{jacow-help} A. Name and D. Person, Phys. Rev. Lett. 25 (1997) 56.
 
 \bibitem{exampl-ref}
-A.N. Other, ``A Very Interesting Paper'', EPAC'96, Sitges, June 1996, MOPCH31, p. 7984 (1996),
-\texttt{http://www.JACoW.org}.
+A.N. Other, ``A Very Interesting Paper,'' EPAC'96, Sitges, June 1996, MOPCH31, p. 7984 (1996),
+\texttt{http://www.JACoW.org}  \{no period after URL\}
 
+\bibitem{exampl-ref2}
+F.E.~Black et al., {\it This is a Very Interesting Book}, (New York: Knopf, 2007), 52.
 
+\bibitem{exampl-ref3}
+G.B.~Smith et al., ``Title of Paper,'' MOXAP07, these proceedings.
 \end{thebibliography}
 
 \end{document}
