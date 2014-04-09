@@ -1,0 +1,288 @@
+%%
+%% This file has been developed as a common template for papers
+%% destined for electronic production using Adobe Acrobat
+%% software for Accelerator Conferences
+%%
+%% See the JACo Website for more information
+%%
+%%       http://www.cern.ch/accelconf/
+%%
+
+%  Special thanks to John Jowett and Michel Goossens from CERN and
+%  Martin Comyn at TRIUMF for their significant contributions to
+%  this class file over the period 1996 to 2000.
+%                                                 John Poole
+%                                                 March 2000
+
+%  JAC2001.cls is a modified version of JAC2000.cls to produce indented
+%  first paragraphs after section, subsection and subsubsection headings.
+%
+%                                                 Martin Comyn  April 2001
+
+%  This is a modified version of JAC2003.cls to adjust space around
+%  section and subsection headers to be more consistent with JACOW Word
+%  templates.
+%
+%                                                 Todd Satogata  March 2011
+%
+% This is a completly rewritten version of JAC2003.cls which needs a current
+% TeX-System to run.
+%                                                 Ulrike Fischer, November 2013
+
+
+\def\fileversion{1.4}
+\def\filedate{2013/11/20}
+\def\docdate {2013/11/20}
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{jacow}[\filedate\space Version \fileversion]
+
+\typeout{------------------------------------------------------------------------}
+\typeout{LaTeX2e Class file for Accelerator Conference publication for LaTeX2e users}
+\typeout{ }
+\typeout{Use the boxit option to draw a box on page showing the correct margins}
+\typeout{ }
+\typeout{Itemize, Enumerate and Description environments are compact versions}
+\typeout{------------------------------------------------------------------------}
+\typeout{ }
+
+\newif\ifjacowbiblatex
+
+\DeclareOption{acus}{%
+   \PassOptionsToPackage{paper=letterpaper}{geometry}
+   \typeout{Setup for US LETTER PAPER}}
+
+\DeclareOption{letterpaper}{%
+   \PassOptionsToPackage{paper=letterpaper}{geometry}
+   \typeout{Setup for US LETTER PAPER}}
+
+
+\DeclareOption{aca4}{%
+    \PassOptionsToPackage{paper=a4paper}{geometry}
+    \typeout{Setup for A4 PAPER}}
+
+\DeclareOption{boxit}{\PassOptionsToPackage{showframe}{geometry}}
+
+\DeclareOption{biblatex}{\jacowbiblatextrue}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+
+\ExecuteOptions{aca4}
+\ProcessOptions
+\RequirePackage{fix-cm}
+\LoadClass[10pt,twocolumn]{article}
+\RequirePackage{flushend}
+
+% Tools:
+\RequirePackage{etoolbox}
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+\RequirePackage{textcase}%
+
+%Add thanks to the list of "\@nonchangecase"-commands from textcase:
+\def\@uclcnotmath#1#2#3#4{\begingroup
+      #1%
+      \def\({$}\let\)\(%
+      \def\NoCaseChange##1{\noexpand\NoCaseChange{\noexpand##1}}%
+      \@nonchangecase\label
+      \@nonchangecase\ref
+      \@nonchangecase\ensuremath
+      \@nonchangecase\thanks %new
+      \def\cite##1##{\toks@{\noexpand\cite##1}\@citex}%
+      \def\@citex##1{\NoCaseChange{\the\toks@{##1}}}%
+      \def\reserved@a##1##2{\let#2\reserved@a}%
+      \expandafter\reserved@a\@uclclist\reserved@b{\reserved@b\@gobble}%
+      \protected@edef\reserved@a{\endgroup
+          \noexpand\@skipmath#3#4$\valign$}%
+      \reserved@a}
+
+\RequirePackage[detect-mode]{siunitx}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage[figureposition=bottom,tableposition=top,skip=5pt]{caption}
+\RequirePackage{xcolor}
+\RequirePackage{url}
+\AtEndPreamble{\RequirePackage[autostyle]{csquotes}}
+
+
+% Page layout:
+\RequirePackage[%
+  textwidth=170mm,
+  textheight=241mm,
+  heightrounded,
+  left=20mm,
+  columnsep=5mm,
+  bottom=19mm,
+  noheadfoot,
+  nomarginpar,
+  twocolumn]
+  {geometry}
+
+\columnseprule 0pt
+\usepackage[hang]{footmisc}
+\setlength{\footnotemargin}{.6em}
+
+
+\pagestyle{empty}
+
+% Fonts: Times clones
+
+\ifboolexpr{bool{xetex} or bool{luatex}}
+ {
+   \RequirePackage{unicode-math}
+   \setmainfont{TeX Gyre Termes}
+   \setmathfont{TeX Gyre Termes Math}
+ }
+ {
+  \RequirePackage{textcomp}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{lmodern}
+  \RequirePackage{tgtermes}
+  \RequirePackage{newtxmath}
+
+ }
+
+
+
+\RequirePackage{microtype}
+%Lists
+
+\RequirePackage{enumitem}
+\newenvironment{Enumerate}{\begin{enumerate}[nosep]}{\end{enumerate}}
+\newenvironment{Itemize}{\begin{itemize}[nosep]}{\end{itemize}}
+\newenvironment{Description}{\begin{description}[nosep]}{\end{description}}
+
+
+%Floatparameter:
+\renewcommand{\topfraction}{.95}
+\renewcommand{\bottomfraction}{.95}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+
+
+%headings:
+% section: Uppercase only for text
+\renewcommand{\section}
+   {%
+    \@startsection{section}{1}{0mm}
+       {2.0ex plus 0.8ex minus .1ex}{1.0ex plus .2ex}
+       {\normalfont\large\bfseries\mathversion{bold}\centering\MakeTextUppercase}%
+   }%
+
+\renewcommand\subsection
+  {%
+   \@startsection{subsection}{2}{\z@}
+    {1.4ex plus .8ex minus .17ex}{0.8ex plus .17ex}
+    {\normalfont\large\itshape}%
+   }
+
+\renewcommand\subsubsection
+ {%
+  \@startsection{subsubsection}{3}{\parindent}
+  {2.5ex plus .7ex minus .17ex}{-1em}
+  {\normalfont\normalsize\bfseries}%
+ }
+
+\renewcommand\paragraph
+ {%
+  \@startsection{paragraph}{4}{\z@}
+  {2.5ex plus .7ex minus .17ex}{-1em}
+  {\normalfont\normalsize\itshape}%
+ }
+
+\renewcommand\subparagraph
+ {%
+  \@startsection{subparagraph}{4}{\parindent}
+  {2.25ex plus .7ex minus .17ex}{-1em}
+  {\normalfont\normalsize\bfseries}%
+ }
+
+\setcounter{secnumdepth}{0}
+
+% This definition of \maketitle taken from article.sty, and has been
+% somewhat modified.
+
+\def\maketitle{\par
+ \begingroup
+   \def\thefootnote{\fnsymbol{footnote}}
+   \def\@makefnmark{\hbox
+       to 5pt{$^{\@thefnmark}$\hss}}
+   \twocolumn[\@maketitle]
+   \@thanks
+ \endgroup
+ \enlargethispage{\jac@copyrightspace}%
+ \setcounter{footnote}{0}
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\newlength{\titleblockheight}       % so user can change it if need be
+\setlength{\titleblockheight}{3.5cm}
+
+\newlength\titleblockstartskip
+\setlength\titleblockstartskip{3pt}
+
+
+\newlength\titleblockmiddleskip
+\setlength\titleblockmiddleskip{1em}
+
+\newlength\titleblockendskip
+\setlength\titleblockendskip{1em}
+
+
+\def\@maketitle{%
+  \vskip \titleblockstartskip \centering
+  {\Large\bfseries \MakeTextUppercase{\@title} \par}
+  \vskip \titleblockmiddleskip               % Vertical space after title.
+  {\large\begin{tabular}[t]{@{}c@{}}\@author \end{tabular}\par}
+  \vskip \titleblockendskip}
+
+
+% The \copyrightspace command is used to produce a blank space in the first
+% column where a copyright notice may go.  It works by producing
+% with \enlargethispage and is inserted by \maketitle.
+% The command should be issued in the preamble.
+
+\newcommand\jac@copyrightspace{0pt}
+\newcommand\copyrightspace[1][1cm]{\renewcommand\jac@copyrightspace{-#1}}
+
+
+\renewenvironment{abstract}
+ {\subsection*{Abstract}}
+ {\par}
+
+\ifboolexpr{bool{jacowbiblatex}}
+ {\RequirePackage[style=numeric-comp,sorting=none]{biblatex}
+  \renewbibmacro*{url+urldate}{%
+    \iffieldundef{url}
+     {}
+     {\printfield{url}%
+      \nopunct}}%
+  \DeclareFieldFormat{url}{\url{#1}}
+  \DeclareFieldFormat{eprint}{#1}
+  \setlength\bibitemsep{0pt}
+  \setlength\bibparsep{0pt}
+  \setlength\biblabelsep{5pt}
+  \AtBeginBibliography{\small\clubpenalty4000\widowpenalty4000}%
+ }
+ {\RequirePackage{cite}
+  % Redefine to use smaller fonts
+  \def\thebibliography#1{\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
+  \section*{REFERENCES\@mkboth
+  {REFERENCES}{REFERENCES}}\small\list
+  {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \usecounter{enumi}}
+    \def\newblock{\hskip .11em plus .33em minus .07em}
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax}
+   \let\endthebibliography=\endlist
+  }
+
+
+%\sloppy
+\clubpenalty10000\widowpenalty10000
+\flushbottom
+%-----------------------------------------------------------------------
+\endinput
