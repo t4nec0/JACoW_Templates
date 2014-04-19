@@ -28,11 +28,16 @@
 % This is a completly rewritten version of JAC2003.cls which needs a current
 % TeX-System to run.
 %                                                 Ulrike Fischer, November 2013
+%
+% small change to correct the text block inside JACoW's magic red borders for
+% a4paper (aca4); top has been set 18.5mm (19mm is defined in the template but
+% leaves decenders outside the lower y margin).
+%                                                 Volker RW Schaa, April 2014
 
 
-\def\fileversion{1.4}
-\def\filedate{2013/11/20}
-\def\docdate {2013/11/20}
+\def\fileversion{1.7}
+\def\filedate{2014/04/14}
+\def\docdate {2014/04/14}
 
 
 \NeedsTeXFormat{LaTeX2e}
@@ -48,6 +53,7 @@
 \typeout{ }
 
 \newif\ifjacowbiblatex
+\newif\ifjacowrefpage
 
 \DeclareOption{acus}{%
    \PassOptionsToPackage{paper=letterpaper}{geometry}
@@ -57,6 +63,9 @@
    \PassOptionsToPackage{paper=letterpaper}{geometry}
    \typeout{Setup for US LETTER PAPER}}
 
+\DeclareOption{a4paper}{%
+    \PassOptionsToPackage{paper=a4paper}{geometry}
+    \typeout{Setup for A4 PAPER}}
 
 \DeclareOption{aca4}{%
     \PassOptionsToPackage{paper=a4paper}{geometry}
@@ -64,7 +73,11 @@
 
 \DeclareOption{boxit}{\PassOptionsToPackage{showframe}{geometry}}
 
+\DeclareOption{boxit}{\PassOptionsToPackage{showframe}{geometry}}
+
 \DeclareOption{biblatex}{\jacowbiblatextrue}
+
+\DeclareOption{refpage}{\jacowrefpagetrue}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
@@ -73,7 +86,6 @@
 \RequirePackage{fix-cm}
 \LoadClass[10pt,twocolumn]{article}
 \RequirePackage{flushend}
-
 % Tools:
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
@@ -89,6 +101,8 @@
       \@nonchangecase\ref
       \@nonchangecase\ensuremath
       \@nonchangecase\thanks %new
+      \@nonchangecase\si %new
+      \@nonchangecase\SI %new
       \def\cite##1##{\toks@{\noexpand\cite##1}\@citex}%
       \def\@citex##1{\NoCaseChange{\the\toks@{##1}}}%
       \def\reserved@a##1##2{\let#2\reserved@a}%
@@ -97,7 +111,7 @@
           \noexpand\@skipmath#3#4$\valign$}%
       \reserved@a}
 
-\RequirePackage[detect-mode]{siunitx}
+\RequirePackage[detect-mode,detect-weight]{siunitx}
 \RequirePackage{graphicx}
 \RequirePackage{booktabs}
 \RequirePackage[figureposition=bottom,tableposition=top,skip=5pt]{caption}
@@ -113,7 +127,7 @@
   heightrounded,
   left=20mm,
   columnsep=5mm,
-  bottom=19mm,
+  top=18.5mm,
   noheadfoot,
   nomarginpar,
   twocolumn]
@@ -247,11 +261,28 @@
 \newcommand\jac@copyrightspace{0pt}
 \newcommand\copyrightspace[1][1cm]{\renewcommand\jac@copyrightspace{-#1}}
 
-
-\renewenvironment{abstract}
- {\subsection*{Abstract}}
- {\par}
-
+\ifboolexpr{bool{@titlepage}}
+{\renewenvironment{abstract}
+ {\list{}{%
+    \setlength{\leftmargin}{\dimexpr\textwidth/2-0.75\columnwidth}%
+    \setlength{\rightmargin}{\dimexpr-0.75\columnwidth-\columnsep}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemsep}{\parskip}%
+    \setlength{\itemindent}{\z@}%
+    \setlength{\topsep}{\z@}%
+    \setlength{\parsep}{\parskip}%
+    \setlength{\partopsep}{\z@}%
+    \let\makelabel\@gobble
+    \setlength{\labelwidth}{\z@}%
+    \advance\@listdepth\m@ne   }%
+   \item\relax\subsection*{Abstract}}
+ {\endlist\clearpage}
+}
+{%
+ \renewenvironment{abstract}
+  {\subsection*{Abstract}}
+  {\par}
+}
 \ifboolexpr{bool{jacowbiblatex}}
  {\RequirePackage[style=numeric-comp,sorting=none]{biblatex}
   \renewbibmacro*{url+urldate}{%
@@ -264,11 +295,13 @@
   \setlength\bibitemsep{0pt}
   \setlength\bibparsep{0pt}
   \setlength\biblabelsep{5pt}
+  \ifjacowrefpage\preto\blx@bibliography{\clearpage}\fi
   \AtBeginBibliography{\small\clubpenalty4000\widowpenalty4000}%
  }
  {\RequirePackage{cite}
   % Redefine to use smaller fonts
-  \def\thebibliography#1{\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
+  \def\thebibliography#1{\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}%
+  \ifjacowrefpage\clearpage\fi
   \section*{REFERENCES\@mkboth
   {REFERENCES}{REFERENCES}}\small\list
   {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
@@ -285,4 +318,46 @@
 \clubpenalty10000\widowpenalty10000
 \flushbottom
 %-----------------------------------------------------------------------
+
+%avoid bug of fixltx2e:
+%http://www.latex-project.org/cgi-bin/ltxbugs2html?pr=latex/4023
+\RequirePackage{fixltx2e}%
+\def\@outputdblcol{%
+  \if@firstcolumn
+    \global\@firstcolumnfalse
+    \global\setbox\@leftcolumn\copy\@outputbox
+    \splitmaxdepth\maxdimen
+    \vbadness\maxdimen
+    \setbox\@outputbox\vbox{\unvbox\@outputbox\unskip}%new
+    \setbox\@outputbox\vsplit\@outputbox to\maxdimen
+    \toks@\expandafter{\topmark}%
+    \xdef\@firstcoltopmark{\the\toks@}%
+    \toks@\expandafter{\splitfirstmark}%
+    \xdef\@firstcolfirstmark{\the\toks@}%
+    \ifx\@firstcolfirstmark\@empty
+      \global\let\@setmarks\relax
+    \else
+      \gdef\@setmarks{%
+        \let\firstmark\@firstcolfirstmark
+        \let\topmark\@firstcoltopmark}%
+    \fi
+  \else
+    \global\@firstcolumntrue
+    \setbox\@outputbox\vbox{%
+     \hb@xt@\textwidth{%
+        \hb@xt@\columnwidth{\box\@leftcolumn \hss}%
+        \hfil
+        \vrule \@width\columnseprule
+        \hfil
+       \hb@xt@\columnwidth{\box\@outputbox \hss}}}%
+  \@combinedblfloats
+    \@setmarks
+    \@outputpage
+    \begingroup
+      \@dblfloatplacement
+      \@startdblcolumn
+      \@whilesw\if@fcolmade \fi{\@outputpage\@startdblcolumn}%
+    \endgroup
+  \fi}
+
 \endinput
