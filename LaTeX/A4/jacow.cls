@@ -5,40 +5,71 @@
 %%
 %% See the JACo Website for more information
 %%
-%%       http://www.cern.ch/accelconf/
+%%       http://jacow.org/
 %%
-
+%  v0.1-1.3
 %  Special thanks to John Jowett and Michel Goossens from CERN and
 %  Martin Comyn at TRIUMF for their significant contributions to
 %  this class file over the period 1996 to 2000.
 %                                                 John Poole
 %                                                 March 2000
-
+%  v1.4
 %  JAC2001.cls is a modified version of JAC2000.cls to produce indented
 %  first paragraphs after section, subsection and subsubsection headings.
-%
 %                                                 Martin Comyn  April 2001
-
+%
+%  v1.5
 %  This is a modified version of JAC2003.cls to adjust space around
 %  section and subsection headers to be more consistent with JACOW Word
-%  templates.
+%  templates.                                     Todd Satogata  March 2011
 %
-%                                                 Todd Satogata  March 2011
-%
-% This is a completly rewritten version of JAC2003.cls which needs a current
+% v 1.6
+% This is a complectly rewritten version of JAC2003.cls which needs a current
 % TeX-System to run.
 %                                                 Ulrike Fischer, November 2013
 %
-% small change to correct the text block inside JACoW's magic red borders for
-% a4paper (aca4); top has been set 18.5mm (19mm is defined in the template but
-% leaves decenders outside the lower y margin).
-%                                                 Volker RW Schaa, April 2014
-
-
-\def\fileversion{1.7}
-\def\filedate{2014/04/14}
-\def\docdate {2014/04/14}
-
+% v 1.7
+% - small change to correct the text block inside JACoW's magic red borders for
+%   a4paper (aca4); top has been set 18.5mm (19mm is defined in the template but
+%   leaves descenders outside the lower y margin).
+% - duplicate {boxit} removed
+%                                                 Volker RW Schaa, 14 April 2014
+%
+% v1.8
+% - added setup for \micro sign which disappears when using XeTeX or LuaTeX
+%   with unicode-math.                             Ulrike Fischer, 21 April 2014
+%
+% v1.9
+% - fixed the pdfLaTeX warnings for the text/math-micro hack
+%                                                  Ulrike Fischer, 22 April 2014
+%
+% v1.91
+% - Ligatures=TeX switch introduced to accommodate
+%                                                  Ulrike Fischer, 22 April 2014
+%
+% v1.92
+% - settings for top margin have to be different in A4 and letter to accommodate
+%   JACoW's PitStop Action List. This was found after receiving Plamen Hopchev's
+%   email about margins and testing the workflow with cropping the bounding box
+%   which starts at the lower left edge and not at the top (see graphic JACpic_mc
+%   in the template for measures).
+%                                                 Volker RW Schaa, 29 April 2014
+% v1.93
+% - setting the bottom margin (19mm) without top solves the problem for different
+%   A4/Letter settings. This was already the default in v1.6. Pointed out by
+%   Plamen Hopchev. To accommodate the descenders the bottom margin has been set
+%   to 56pt now.
+%                                                   Volker RW Schaa, 01 May 2014
+%
+% v1.94
+% - the micro sign in UTF-8 prevents ASCII format of the cls file. Ulrike pointed
+%   out a hack in http://tex.stackexchange.com/questions/172968/hide-notation-from-pdftex
+%   which is now introduced.
+%                                                   Volker RW Schaa, 02 May 2014
+%
+\def\fileversion{1.94}
+\def\filedate{2014/05/02}
+\def\docdate {2014/05/02}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{jacow}[\filedate\space Version \fileversion]
@@ -70,8 +101,6 @@
 \DeclareOption{aca4}{%
     \PassOptionsToPackage{paper=a4paper}{geometry}
     \typeout{Setup for A4 PAPER}}
-
-\DeclareOption{boxit}{\PassOptionsToPackage{showframe}{geometry}}
 
 \DeclareOption{boxit}{\PassOptionsToPackage{showframe}{geometry}}
 
@@ -126,8 +155,8 @@
   textheight=241mm,
   heightrounded,
   left=20mm,
+  bottom=56pt,
   columnsep=5mm,
-  top=18.5mm,
   noheadfoot,
   nomarginpar,
   twocolumn]
@@ -140,24 +169,30 @@
 
 \pagestyle{empty}
 
-% Fonts: Times clones
-
 \ifboolexpr{bool{xetex} or bool{luatex}}
- {
+ {}
+ { \catcode`\^^^=9
+ }
+ 
+\ifboolexpr{bool{xetex} or bool{luatex}}
+ { \let\ori@vdots\vdots
    \RequirePackage{unicode-math}
-   \setmainfont{TeX Gyre Termes}
+   \AtBeginDocument{\let\vdots\ori@vdots}
+   \setmainfont[Ligatures=TeX]{TeX Gyre Termes}
    \setmathfont{TeX Gyre Termes Math}
+   \sisetup{
+     math-micro = \text{^^^^03bc},
+     text-micro = ^^^^03bc
+      }
  }
  {
+  % Fonts: Times clones
   \RequirePackage{textcomp}
   \RequirePackage[T1]{fontenc}
   \RequirePackage{lmodern}
   \RequirePackage{tgtermes}
   \RequirePackage{newtxmath}
-
  }
-
-
 
 \RequirePackage{microtype}
 %Lists

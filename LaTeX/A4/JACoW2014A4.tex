@@ -4,6 +4,14 @@
                %refpage      % separate references
               ]{jacow}
 
+\makeatletter%                           % test for XeTeX where the sequence is by default eps-> pdf, jpg, png, pdf, ...
+\ifboolexpr{bool{xetex}}                 % and the JACoW template provides JACpic2v3.eps and JACpic2v3.jpg which might generates errors
+ {\renewcommand{\Gin@extensions}{.pdf,%
+                    .png,.jpg,.bmp,.pict,.tif,.psd,.mac,.sga,.tga,.gif,%
+                    .eps,.ps,%
+                    }}{}
+\makeatother
+
 \ifboolexpr{bool{xetex} or bool{luatex}} % test for XeTeX/LuaTeX
  {}                                      % input encoding is utf8 by default
  {\usepackage[utf8]{inputenc}}           % switch to utf8
@@ -27,7 +35,7 @@
 
 %\copyrightspace %default 1cm. arbitrary size with e.g. \copyrightspace[2cm]
 
-% testing to fill the copyright space 
+% testing to fill the copyright space
 %\usepackage{eso-pic}
 %\AddToShipoutPictureFG*{\AtTextLowerLeft{\textcolor{red}{COPYRIGHTSPACE}}}
 
@@ -74,8 +82,8 @@ requirements. Manuscripts should have:
     \item  Either A4 (\SI{21.0}{cm}~$\times$~\SI{29.7}{cm}; \SI{8.27}{in}~$\times$~\SI{11.69}{in}) or US
            letter size (\SI{21.6}{cm}~$\times$~\SI{27.9}{cm}; \SI{8.5}{in}~$\times$~\SI{11.0}{in}) paper.
     \item  \textit{\textbf{Single-spaced}} text in two columns of \SI{82.5}{mm} (\SI{3.25}{in}) with \SI{5.3}{mm}
-           (\SI{0.2}{in}) separation. Newer versions of Word (2007, 2010) have a default spacing
-           of 1.5 lines; authors must change this to 1 line.
+           (\SI{0.2}{in}) separation. More recent versions of MSWord have a default spacing of 1.5 lines;
+           authors must change this to 1 line.
     \item  The text located within the margins specified in Table~\ref{l2ea4-t1}
            to facilitate electronic processing of the PDF file.
 \end{Itemize}
@@ -365,7 +373,7 @@ this should be the last section of the paper.
 
 \iffalse  % only for "biblatex"
 	\newpage
-	\printbibliography   
+	\printbibliography
 
 % "biblatex" is not used, go the "manual" way
 \else
@@ -377,13 +385,13 @@ this should be the last section of the paper.
 %	C. Petit-Jean-Genaz and J. Poole,
 %	``JACoW, A service to the Accelerator Community,''
 %	EPAC'04, Lucerne, July 2004, THZCH03,  p.~249,
-%	\url{http://www.JACoW.org/e04/papers/THZCH03.PDF} 
+%	\url{http://www.JACoW.org/e04/papers/THZCH03.PDF}
 
 \bibitem{jacow-help}
 	JACoW.org website:
 	%\menu[,]{for Authors,Help,Using \LaTeX}
 	\url{http://jacow.org/index.php?n=Authors.UsingLaTeX}%
-%	last visit 27 March 2014.\newline \mbox{ } 
+%	last visit 27 March 2014.\newline \mbox{ }
 	\hfill\textcolor{red}{\{no hyperlink, no period after URL\}}
 
 \bibitem{exampl-ref}
@@ -398,10 +406,10 @@ this should be the last section of the paper.
 	(New York: Knopf, 2007), 52.
 
 \bibitem{exampl-ref3}
-    G.B.~Smith et al., ``Title of Paper,'' 
-    IPAC'14, Dresden, Germany, 
+    G.B.~Smith et al., ``Title of Paper'',
+    IPAC'14, Dresden, Germany,
     June 2014, MOXAP07, These Proceedings.
-    
+
 	\hspace*{-1.1em}\mbox{\vdots}
 
 \addtocounter{enumi}{5}
