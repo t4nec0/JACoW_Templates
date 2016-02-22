@@ -1,0 +1,79 @@
+\documentclass[a4paper,
+%boxit,
+%titlepage,   % separate title page
+%refpage      % separate references
+]{jacow}
+
+
+\makeatother
+
+% CHECK FOR XeTeX/LuaTeX BEFORE DEFINING AN INPUT ENCODING
+% --------------------------------------------------------
+%
+%
+\ifboolexpr{bool{xetex} or bool{luatex}} % test for XeTeX/LuaTeX
+{}                                      % input encoding is utf8 by default
+{\usepackage[utf8]{inputenc}}           % switch to utf8
+
+\usepackage[USenglish]{babel}
+\usepackage{multirow}
+
+%
+% if BibLaTeX is used
+%
+\ifboolexpr{bool{jacowbiblatex}}%
+{%
+	\addbibresource{jacow-test.bib}
+	\addbibresource{biblatex-examples.bib}
+}{}
+\listfiles
+
+\begin{document}
+	\title{THE \NoCaseChange{JACoW} COLLABORATION\thanks{As of 2016\newline \hspace*{-.8em}Templates are managed by:}}
+
+	\author{J. Poole\textsuperscript{1}, R. Billen, C. Carli, C. Petit-Jean-Genaz, CERN, 1211 Geneva 23,
+		 	Switzerland \\
+		C. E. Eyberger, M. Power, Argonne National Laboratory, Lemont, IL 60439, USA \\
+		I. Costa, D. López Nonell, ALBA Synchrotron, 08290 Cerdanyola de Vallès, Barcelona, Spain \\
+		D. Button, ANSTO, Lucas Heights, NSW 2234, Australia \\
+		K. Riches, Australian Synchrotron, Clayton, VIC 3168, Australia \\
+		J. Piton, L. Sanfelici, Brazilian Synchrontron Light Laboratory, 13083-970 Campinas, Brazil \\
+		C. Hoffman, Brookhaven National Laboratory, Upton, NY 11973, USA \\
+		M. V. Kuzin, Budker Institute of Nuclear Physics, 630090 Novosibirsk, Russia \\
+		M. Marx, Deutsches Elektronen-Synchrotron, 22607 Hamburg, Germany \\
+		I. Andrian\thanks{ivan.andrian@elettra.eu (OpenDocument)}, 
+				  S. Deiuri, Elettra Sincrotrone Trieste, 34149 Basovizza, Italy \\
+		J. Olander, J. Pranke, G. Trahern, European Spallation Source, 221 00 Lund, Sweden \\
+		M. Arena, Fermilab, Batavia IL 60510, USA \\
+		M. Bai, Forschungszentrum Jülich, 52425 Jülich, Germany \\
+		R. Müller, V. R. W. Schaa\thanks{v.r.w.schaa@gsi.de (\LaTeX)}, \\
+		GSI Helmholtzzentrum für Schwerionenforschung, 64291 Darmstadt, Germany \\
+		I. Izotov, Institute of Applied Physics, 603950 Nizhny Novgorod, Russia \\
+		N. Zhao, Institute of High Energy Physics, Beijing 100049, P. R. China \\
+		Y. H. Chin, K. Furukawa, T. Kosuge, T. Murakami, A. Shirakawa, \\
+		KEK, Tsukuba, Ibaraki 305-0801, Japan \\
+		S. Choi, Korea Basic Science Institute, 609-735 Busan, Korea \\
+		J. Chew, Lawrence Berkeley National Laboratory, Berkeley, CA 04720, USA \\
+		K. A. Bishofberger, Los Alamos National Laboratory, Los Alamos, NM 87545, USA \\
+		V. G. Mitts, CAMD, Louisiana State University, Baton Rouge, LA 70806, USA \\ 
+		K. Makino, Michigan State University, East Lansing, MI 48824, USA \\
+		A. McCausey, FRIB, Michigan State University, East Lansing, MI 48824, USA \\
+		T. Tanaka, LEBRA, Nihon University, Funabashi 274-8501, Japan \\
+		C. Horak, Oak Ridge National Laboratory, Oak Ridge, TN 37831, USA \\
+		J. Chrin\thanks{jan.chrin@psi.ch (MS Word)}, Paul Scherrer Institut, 5232 Villigen PSI, Switzerland \\
+		L. Eun, K. G. Hwa, D.-E. Kim, K.-S. Kim, Pohang Accelerator Laboratory, Gyeongbuk, Korea \\
+		K. Yamada, RIKEN, Wako, Saitama 351-0198, Japan \\
+		Y. Leng, H. Xin, H. Yan, Shanghai Institute of Applied Physics, Shanghai 201800, P. R. China \\
+		M. Montes-Loera, SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA \\
+		S. Waller, STFC Daresbury Laboratory, Warrington, WA4 4AD, UK \\
+		L. Liljeby, Stockholm University, 10691 Stockholm, Sweden \\
+		E. Akers, A. Cuffe, T. Satogata\thanks{todd.satogata@jlab.org (MS Word for Mac)},\\
+		Thomas Jefferson National Accelerator Facility, Newport News, VA 23606, USA \\
+		J. Thomson, TRIUMF, Vancouver, BC V6T 2A3, Canada \\
+		\textsuperscript{1}also at JP Scientific (Nantwich) Ltd, UK}
+
+	\maketitle
+
+\raggedend
+
+\end{document}
