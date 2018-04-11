@@ -1,0 +1,66 @@
+###########################################################################
+############                    jacow.cls                      ############
+###########################################################################
+
+Class File: jacow.cls
+Authors:    John Jowett (CERN), Michel Goossens (CERN), 
+            Martin Comyn (TRIUMF), John Poole (CERN), Todd Satogata (BNL), 
+            Ulrike Fischer, Volker RW Schaa (GSI)
+Version:    2.2
+Date:       22 Februar 2018
+Copyright:  1996-2018 by JACoW, Geneva, Switzerland
+Homepage:   http://www.jacow.org
+License:    LPPL 1.3c
+Status:     Maintained
+Maintainer: Volker RW Schaa
+
+###########################################################################
+############        A BRIEF DESCRIPTION OF THE PACKAGE         ############
+###########################################################################
+
+Many conference series have adopted the same standards for electronic 
+publication and have joined the Joint Accelerator Conferences Website 
+(JACoW) collaboration for the publication of their proceedings.
+
+The "jacow.cls" class is used for submissions to the proceedings in LaTeX
+in one of the 19 conferences in this series. The documents in this package 
+describe the common requirements for the submission of papers to these 
+conferences. Please consult individual conference information for page 
+limits, method of electronic submission, etc. It is not intended that 
+this should be a tutorial in word processing; the aim is to explain the 
+particular requirements for electronic publication at www.JACoW.org.
+
+The package consists of the following files
+  class file
+    jacow.cls             	JACoW class file v2.2 of 2018/02/23
+
+  templates
+    JACoW_A4_LaTeX.tex    	basic A4/letter templates to demonstrate the
+    JACoW_US_LaTeX.tex  	use and explain the various parameters
+                            and settings for a submission to a
+                            JACoW conference proceedings.
+							
+    JACoW_A4_LaTeX.pdf    	PDF with JACoW class file documentation and examples for  
+							A4 with "en_uk" and Letter with en_us specific formatting.
+                            
+    JACoW_US_LaTeX.pdf	  	template in format "letter" and American formatting
+
+							To generate the complete PDF for documentation
+							please remove the "%" of the last two commands
+							in "JACoW_xx_LaTeX.tex" which include the 
+							Annexes A-C of "annexes-xx.tex"
+
+	annexes-A4.tex			Annexes A-C which are included in "JACoW_A4_LaTeX.tex"
+	annexes-US.tex			Annexes A-C which are included in "JACoW_US_LaTeX.tex"
+							
+
+  figures/includes
+    JACpic_mc.pdf         	a graphic showing the JACoW page format 
+							(being the smaller side of A4 and letter respectively)
+    jacow2017.jpg         	a graphic for a full width figure (spanning
+                            the two columns and multiline caption) showing
+							the participants of the 2017 JACoW Team Meeting
+
+    jacow-collaboration-2018.tex  	an example title page showing the JACoW Collaboration. 
+    jacow-collaboration-2018.pdf  	The PDF is later included in ANNEX A.
+

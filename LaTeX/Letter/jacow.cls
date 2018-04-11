@@ -1,12 +1,44 @@
 %%
 %% This file has been developed as a common template for papers
-%% destined for electronic production using Adobe Acrobat
-%% software for Accelerator Conferences
+%% destined for electronic production for Accelerator Conferences
 %%
-%% See the JACo Website for more information
+%% See the JACoW website for more information
 %%
 %%       http://jacow.org/
 %%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3c of this license or (at your option) any later
+%% version. This version of this license is in
+%%    http://www.latex-project.org/lppl/lppl-1-3c.txt
+%% and the latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of
+%% LaTeX version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status "maintained".
+%% 
+%% This Current Maintainer of this work is Volker RW Schaa.
+%% 
+%% This work consists of the following files
+%%    jacow.cls               this class file
+%%    LaTeX-A4-JACoW.tex      A4/letter templates to demonstrate the 
+%%    LaTeX-Letter-JACoW.tex  .. use and explain the various parameters
+%%                            .. and settings for a submission to
+%%                            .. a JACoW conference proceedings
+%%    LaTeX-A4-JACoW.pdf      template in format A4 and European 
+%%                            settings (citation and hyphenation)
+%%    LaTeX-Letter-JACoW.pdf  template in format letter and American
+%%                            setting (citation and hyphenation)
+%%    JACpic_mc.pdf           a graphic showing the JACoW page format
+%%    JACpic2v5.png           a graphic for a full width figure and
+%%                            multiline caption
+%%    jacow-collaboration-2016.tex  an example title page showing the
+%%    jacow-collaboration-2016.pdf  JACoW Colloaboration, the responsible
+%%                                  editors for the various platform
+%%                            dependent templates (LaTeX, Word on PC and
+%%                            Mac, ODF). The PDF is included in the template
+%% 
 %  v0.1-1.3
 %  Special thanks to John Jowett and Michel Goossens from CERN and
 %  Martin Comyn at TRIUMF for their significant contributions to
@@ -20,7 +52,7 @@
 %
 %  v1.5
 %  This is a modified version of JAC2003.cls to adjust space around
-%  section and subsection headers to be more consistent with JACOW Word
+%  section and subsection headers to be more consistent with JACoW Word
 %  templates.                                     Todd Satogata  March 2011
 %
 % v 1.6
@@ -67,9 +99,44 @@
 %   which is now introduced.
 %                                                   Volker RW Schaa, 02 May 2014
 %
-\def\fileversion{1.94}
-\def\filedate{2014/05/02}
-\def\docdate {2014/05/02}
+% v1.95
+% - only change to the version 1.94 are the extended documenation and license
+%   statement (lppl1.3c) as preparation for publication on CTAN.
+%                                                   Volker RW Schaa, 02 May 2014
+%
+% v1.96
+% - modification of bibatex style information. Since the JACoW template Feb-2016 
+%   the bibliography requires the IEEEtran style. Heine provided an adapted
+%   version using the required values of the template:
+%   + ieee biblatex style instead of numeric-compv
+%   + doi field is cleared for all entries
+%   + et al. is used when there are > 6 authors (maxnames=6). In that case, 
+%     only the first author is mentioned (minnames=1)
+%   + url field is cleared for articles and inproceedings
+%   + giveninits=true reduces all given names to initials
+%                                            Heine Dølrath Thomsen, 30 June 2016
+%
+% v2.00
+% - after using v1.96 during conferences where DOIs/URLs were present in biblio-
+%   graphic records, the following changes to Heine's version have been made:
+%   + doi field allowed
+%   + url field allowed
+%
+% v2.1 new options introduced
+% flushend: new: keeplastbox
+% siunitx:  new: binary-units=true
+% BibLaTeX: changed: style=ieee => bibstyle=ieee, citestyle=numeric-comp
+%           new: dashed=false
+%           removed: doi=false
+%
+% v2.2
+% - adapted to the changes of template version 2018-02
+% - made this one official
+%                                                  Volker RW Schaa, 23 Feb 2018
+%
+\def\fileversion{2.2}
+\def\filedate{2018/02/23}
+\def\docdate {2018/02/23}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{jacow}[\filedate\space Version \fileversion]
@@ -112,9 +179,10 @@
 
 \ExecuteOptions{aca4}
 \ProcessOptions
+\RequirePackage{cmap}
 \RequirePackage{fix-cm}
 \LoadClass[10pt,twocolumn]{article}
-\RequirePackage{flushend}
+\RequirePackage[keeplastbox]{flushend} %% modified
 % Tools:
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
@@ -140,7 +208,7 @@
           \noexpand\@skipmath#3#4$\valign$}%
       \reserved@a}
 
-\RequirePackage[detect-mode,detect-weight]{siunitx}
+\RequirePackage[detect-mode,detect-weight, binary-units=true]{siunitx}
 \RequirePackage{graphicx}
 \RequirePackage{booktabs}
 \RequirePackage[figureposition=bottom,tableposition=top,skip=5pt]{caption}
@@ -319,7 +387,10 @@
   {\par}
 }
 \ifboolexpr{bool{jacowbiblatex}}
- {\RequirePackage[style=numeric-comp,sorting=none]{biblatex}
+%2.00 {\RequirePackage[style=ieee,sorting=none,giveninits=true,doi=false,maxnames=6,minnames=1]{biblatex}
+%2.1 {\RequirePackage[style=ieee,sorting=none,giveninits=true,maxnames=6,minnames=1]{biblatex}
+%2.2
+  {\RequirePackage[bibstyle=ieee,citestyle=numeric-comp,dashed=false,sorting=none,giveninits=true,maxnames=6,minnames=1]{biblatex}
   \renewbibmacro*{url+urldate}{%
     \iffieldundef{url}
      {}
@@ -327,6 +398,13 @@
       \nopunct}}%
   \DeclareFieldFormat{url}{\url{#1}}
   \DeclareFieldFormat{eprint}{#1}
+%% when to activate this? Paper format acus/letter
+%  \DefineBibliographyExtras{american}{\stdpunctuation} % mod
+  % Drop urls for article and inproceedings entries
+%2.00  \DeclareFieldFormat
+%2.00  [article,inproceedings]
+%2.00  {url}{}
+  %
   \setlength\bibitemsep{0pt}
   \setlength\bibparsep{0pt}
   \setlength\biblabelsep{5pt}
