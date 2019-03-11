@@ -1,3 +1,13 @@
+% !TeX spellcheck = en_GB
+%
+%
+% v 2.3  Feb 2019   Volker RW Schaa
+%		# changes in the collaboration therefore updated file "jacow-collaboration.tex"
+%		# all References with DOIs have their period/full stop before the DOI (after pp. or year)
+%		# in the author/affiliation block all ZIP codes in square brackets removed as it was not %         understood as optional parameter and ZIP codes had bin put in brackets
+%       # References to the current IPAC are changed to "IPAC'19, Melbourne, Australia"
+%       # font for ‘url’ style changed to ‘newtxtt’ as it is easier to distinguish "O" and "0"
+%
 \documentclass[a4paper,
                %boxit,        % check whether paper is inside correct margins
                %titlepage,    % separate title page
@@ -39,7 +49,6 @@
 
 \usepackage[USenglish]{babel}
 
-
 %
 % if BibLaTeX is used
 %
@@ -60,9 +69,9 @@
 
 \title{preparation OF papers for \NoCaseChange{JACoW} conferences\thanks{Work supported by ...}}
 
-\author{A. N. Author\thanks{email address}, H. Coauthor, Name of Institute or Affiliation, [Postal Code] City, Country \\
-		P. Contributor\textsuperscript{1}, Name of Institute or Affiliation, [Postal Code] City, Country \\
-		\textsuperscript{1}also at Name of Secondary Institute or Affiliation, [Postal Code] City, Country}
+\author{A. N. Author\thanks{email address}, H. Coauthor, Name of Institute or Affiliation, City, Country \\
+		P. Contributor\textsuperscript{1}, Name of Institute or Affiliation, City, Country \\
+		\textsuperscript{1}also at Name of Secondary Institute or Affiliation, City, Country}
 	
 \maketitle
 
@@ -78,11 +87,11 @@
    submission, etc. It is not intended that this should
    be a tutorial in word processing; the aim is to explain the
    particular requirements for electronic publication at
-   www.JACoW.org. The abstract itself is to act as a standalone
+   www.JACoW.org. The abstract itself is to act as a stand-alone
    entity and, as such, should not include citations. Any acronyms 
    should be expanded on their first occurrence, both in the 
    abstract and in the rest of the paper. 
-   The abstract itself is to act as a standalone entity and, 
+   The abstract itself is to act as a stand-alone entity and, 
    as such, should not include citations. Any acronyms should 
    be expanded on their first occurrence, both in the abstract 
    and in the rest of the paper.
@@ -124,14 +133,14 @@ requirements. Manuscripts should have:
            Right       & \SI{20}{mm} (\SI{0.79}{in})            & \SI{1.02}{in} (\SI{26}{mm})        \\
        \bottomrule
    \end{tabular}
-   \label{l2ea4-t1}
+   \label{tab:margins}
 \end{table}
 
 \subsection{Fonts}
 
 In order to produce good Adobe Acrobat PDF files, authors
 using the `jacow' \LaTeX{} template are asked to use only the fonts
-defined in the ‘jacow’ class file (v2.2 of 2018/02/23) in standard, 
+defined in the ‘jacow’ class file (v2.3 of 2019/01/15) in standard, 
 bold (i.\,e., \verb|\textbf|) or italic (i.\,e., \verb|\textit|) form and
 symbols from the standard set of fonts. In Word use only
 Symbol and, depending on your platform, Times or Times New Roman
@@ -143,8 +152,7 @@ be the width of the full page. Tables and figures may span
 the whole \SI{170}{mm} page width, if desired (see Fig.~\ref{fig:jacow_team}), but
 if they span both columns, they should be placed at either
 the top or bottom of a page to ensure proper flow of the
-text (which should flow from top to bottom in each column 
-and the numbering should be in sequence).
+text (which should flow from top to bottom in each column).
 
 \begin{figure}[!htb]
    \centering
@@ -155,10 +163,10 @@ and the numbering should be in sequence).
 
 \begin{figure*}[!tbh]
     \centering
-    \includegraphics*[width=\textwidth]{jacow2017}
+    \includegraphics*[width=\textwidth]{JACpic2}
 
     \caption{Example of a full-width figure showing the JACoW Team at their annual
-    	     meeting in November 2017. This figure has a multi-line caption that has to be
+    	     meeting in December 2018. This figure has a multi-line caption that has to be
     	     justified rather than centred.}
     \label{fig:jacow_team}
 \end{figure*}
@@ -166,7 +174,8 @@ and the numbering should be in sequence).
 \subsection{Title and Author List}
 
 The title should use \SI{14}{pt} bold uppercase letters and be centred on the page.
-Individual letters may be lowercased to avoid misinterpretation (e.\,g., mW, GeV, SPRing-8, SwissFEL).
+Individual letters may be lowercased to avoid misinterpretation (e.\,g., mW, GeV, 
+SPring-8, SwissFEL).
 To include a funding support statement, put an asterisk after the title and
 the support text at the bottom of the first column on page~1---in Word,
 use a text box; in \LaTeX, use $\backslash$\texttt{thanks}. See also the
@@ -230,7 +239,7 @@ captions are placed above tables.
 Figure captions are formatted as shown in Figs.~\ref{fig:paper_layout} and \ref{fig:jacow_team},
 while table captions take the form of a heading,
 with initial letters of principle words, capitalized, and
-without a period at the end (see Tables~\ref{eq:units} and \ref{tab:styles}).
+without a period at the end (see Tables~\ref{tab:margins} and~\ref{tab:styles}).
 Any reference to the contents of the table should be made from
 the body of the paper rather than from within the table
 caption itself.
@@ -251,19 +260,20 @@ If a displayed equation needs a number (i.\,e., it will be
 referenced), place it in parentheses, and flush with the
 right margin of the column. The equation itself should be
 indented and centred, as far as is possible:
-\begin{equation}\label{eq:units}
+\begin{equation}\label{eq:label}
     C_B=\frac{q^3}{3\epsilon_{0} mc}=\SI{3.54}{\micro eV/T}
 \end{equation}
 
 When referencing a numbered equation, use the word
 “Equation” at the start of a sentence, and the abbreviated
 form, “Eq.”, if in the text. The equation number is placed
-in parentheses [e.g., Eq. (1)].
+in parentheses [e.\,g., Eq.~\eqref{eq:label}], which can be 
+achieved in \LaTeX{} using \verb|\eqref{eq:label}|.
 
 \subsection{Units}
 	
 Units should be written using the standard, roman font,
-not the italic font, as shown in Eq.~(\ref{eq:units}).
+not the italic font, as shown in Eq.~\eqref{eq:label}.
 An unbreakable space should precede a unit (in \LaTeX{} use a “\verb|\,|”,
 the template uses the ‘siunitx’ package to format units).
 Some examples are: \SI{3}{keV},
@@ -286,15 +296,19 @@ with ranges where appropriate~[1--4, 10].
 
 A URL or DOI may be included as part of a reference, but its
 hyperlink should NOT be added. The usual practice is to
-use a monospace font for the URL so as to help distinguish
-it from normal text. In \LaTeX{} the ‘url’ package is used.
+use a monospaced font for the URL so as to help distinguish
+it from normal text. In \LaTeX{} the ‘url’ package is used with its 
+default font now being switched to ``newtxtt'' which offers
+a better distinction between ``\texttt{O}'' and ``\texttt{0}''.
 
 For authors to properly cite the resources used when researching
 their papers is an obligation. In the interest of
 promoting uniformity and complete citations, the IEEE
 Editorial Style for Transactions and Journals, which itself 
-adheres to the Chicago Manual of Style, has been
-adopted~\cite{IEEE}. Please consult the appended material, \textbf{ANNEX~B},
+adheres to the Chicago Manual of Style, has been adopted~\cite{IEEE}. 
+When citing a periodical, the official abbreviation of the journal 
+should be used\cite{journal-abbreviations}.
+Please consult the appended material, \textbf{ANNEX~B},
 for details. The onus is on authors to pay attention to
 the details of the said style to ensure complete, accurate
 and properly formatted references.
@@ -454,15 +468,18 @@ this should be the last section of the paper.
 		\textit{IEEE Editorial Style Manual},
 		IEEE Periodicals, Piscataway,
 		NJ, USA, Oct. 2014, pp. 34--52.
-	\end{thebibliography}
 
+	\bibitem{journal-abbreviations}
+	\url{https://woodward.library.ubc.ca/researchhelp/journal-abbreviations/}
+
+	\end{thebibliography}
 } % end \ifboolexpr
 %
 % for use as JACoW template the inclusion of the ANNEX parts have been commented out
 % to generate the complete documentation please remove the "%" of the next two commands
 % 
-%\newpage
+\newpage
 
-%\include{annexes-A4}
+\include{annexes-A4}
 
 \end{document}

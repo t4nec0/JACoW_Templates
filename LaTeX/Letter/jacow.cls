@@ -31,31 +31,31 @@
 %%    LaTeX-Letter-JACoW.pdf  template in format letter and American
 %%                            setting (citation and hyphenation)
 %%    JACpic_mc.pdf           a graphic showing the JACoW page format
-%%    JACpic2v5.png           a graphic for a full width figure and
+%%    jacow8.jpg              a graphic for a full width figure and
 %%                            multiline caption
-%%    jacow-collaboration-2016.tex  an example title page showing the
-%%    jacow-collaboration-2016.pdf  JACoW Colloaboration, the responsible
+%%    jacow-collaboration-2018.tex  an example title page showing the
+%%    jacow-collaboration-2018.pdf  JACoW Colloaboration, the responsible
 %%                                  editors for the various platform
 %%                            dependent templates (LaTeX, Word on PC and
 %%                            Mac, ODF). The PDF is included in the template
 %% 
-%  v0.1-1.3
+%  v0.1 to 1.3 : JAC2000.cls
 %  Special thanks to John Jowett and Michel Goossens from CERN and
 %  Martin Comyn at TRIUMF for their significant contributions to
 %  this class file over the period 1996 to 2000.
 %                                                 John Poole
 %                                                 March 2000
-%  v1.4
+%  v1.4 : JAC2001.cls
 %  JAC2001.cls is a modified version of JAC2000.cls to produce indented
 %  first paragraphs after section, subsection and subsubsection headings.
 %                                                 Martin Comyn  April 2001
 %
-%  v1.5
+%  v1.5 : JAC2003.cls
 %  This is a modified version of JAC2003.cls to adjust space around
 %  section and subsection headers to be more consistent with JACoW Word
 %  templates.                                     Todd Satogata  March 2011
 %
-% v 1.6
+% v 1.6 : jacow.cls
 % This is a complectly rewritten version of JAC2003.cls which needs a current
 % TeX-System to run.
 %                                                 Ulrike Fischer, November 2013
@@ -121,22 +121,27 @@
 %   graphic records, the following changes to Heine's version have been made:
 %   + doi field allowed
 %   + url field allowed
-%
+%                                                 Volker RW Schaa, 02 May 2014
 % v2.1 new options introduced
 % flushend: new: keeplastbox
 % siunitx:  new: binary-units=true
 % BibLaTeX: changed: style=ieee => bibstyle=ieee, citestyle=numeric-comp
 %           new: dashed=false
 %           removed: doi=false
+%                                                 Volker RW Schaa, 02 May 2014
 %
 % v2.2
 % - adapted to the changes of template version 2018-02
 % - made this one official
 %                                                  Volker RW Schaa, 23 Feb 2018
 %
-\def\fileversion{2.2}
-\def\filedate{2018/02/23}
-\def\docdate {2018/02/23}
+% v2.3
+% - font for tt switched to newtxtt with option zerostyle=d (dotted 0)
+%                                                  Volker RW Schaa, 15 Jan 2019
+%
+\def\fileversion{2.3}
+\def\filedate{2019/01/15}
+\def\docdate {2019/02/23}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{jacow}[\filedate\space Version \fileversion]
@@ -187,8 +192,8 @@
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
 \RequirePackage{ifluatex}
-\RequirePackage{textcase}%
-
+\RequirePackage{textcase}
+%
 %Add thanks to the list of "\@nonchangecase"-commands from textcase:
 \def\@uclcnotmath#1#2#3#4{\begingroup
       #1%
@@ -213,7 +218,6 @@
 \RequirePackage{booktabs}
 \RequirePackage[figureposition=bottom,tableposition=top,skip=5pt]{caption}
 \RequirePackage{xcolor}
-\RequirePackage{url}
 \AtEndPreamble{\RequirePackage[autostyle]{csquotes}}
 
 
@@ -236,6 +240,8 @@
 
 
 \pagestyle{empty}
+
+\RequirePackage{url}
 
 \ifboolexpr{bool{xetex} or bool{luatex}}
  {}
@@ -260,9 +266,15 @@
   \RequirePackage{lmodern}
   \RequirePackage{tgtermes}
   \RequirePackage{newtxmath}
+  \RequirePackage[zerostyle=d]{newtxtt}
  }
 
 \RequirePackage{microtype}
+%
+% redefine the default Typewriter Font to newtxtt with dotted zeros (v2.3)
+%
+\urlstyle{ttz}
+
 %Lists
 
 \RequirePackage{enumitem}

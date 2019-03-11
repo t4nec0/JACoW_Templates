@@ -1,3 +1,6 @@
+%
+% !TeX spellcheck = en_GB
+%
 \twocolumn[\vspace*{-1.8ex}\section{ANNEX A:\endgraf FORMATTING OF AUTHORS AND AFFILIATIONS}\vspace*{\baselineskip}]
 
 \flushcolsend
@@ -34,14 +37,14 @@ For manuscripts submitted by large collaborations with
 potentially many tens of authors and where, additionally,
 there may be page number limitations, a format consisting
 of the principle author’s name and institute, followed by
-“on behalf of the … collaboration”, is preferred.
+“on behalf of the \ldots\ collaboration”, is preferred.
 
 
 \clearpage
 %
 % Include the title/author page of the JACoW Coolaboration
 %
-\includepdf[pages=-, noautoscale, pagecommand={}]{jacow-collaboration-2018.pdf}{}
+\includepdf[pages=-, noautoscale, pagecommand={}]{jacow-collaboration.pdf}{}
 
 \clearpage
 
@@ -50,7 +53,7 @@ of the principle author’s name and institute, followed by
 \subsection{Referencing JACoW Proceedings}
 
 The format for published JACoW proceedings papers is detailed in the following 
-and can also be readily deduced from Refs. [1-3]. At the very minimum, sufficient 
+and can also be readily deduced from Refs.~[1-3]. At the very minimum, sufficient 
 information should be given to enable readers to clearly identify the paper and 
 to facilitate its import into digital databases.
 \vspace*{-.6\baselineskip}
@@ -64,13 +67,13 @@ of authors becomes large (e.g., $>$6).
 \vspace*{-.6\baselineskip}
 
 \subsubsection{Paper Title} As is modern practice in references, the title
-of the paper is written in sentence case, i.e., only the
+of the paper is written in sentence case, i.\,e., only the
 initial letter of the first word in the title is capitalized.
 Proper nouns, however, also have a capital. Capital letters
 appearing in acronyms likewise remain unaltered
 \vspace*{-.6\baselineskip}
 
-\subsubsection{Conference Proceedings} The proceedings title is
+\subsubsection{Conference Proceedings} The title of the proceedings is
 written in title case in italics using standard abbreviations,
 such as \emph{Int.} and \emph{Conf.} The preposition, ``in'', in normal
 font, precedes the proceedings title. The location,
@@ -80,9 +83,15 @@ the conference took place, is then listed. Finally, details
 pertaining to the paper itself, such as the conference paper
 ID, mandatory page numbers, and the digital object
 identifier (DOI), if existing, are listed in the given order.
-A monospace font for the DOI is used so as to help
+A monospaced font for the DOI is used so as to help
 distinguish it from normal text. In \LaTeX{}
-the ‘url’ package is used. The conference
+the ‘url’ package is used. The Word template uses the Liberation
+Mono TrueType font (size 8 pt), or Lucida Sans Typewriter
+font (size 7.5 pt) in earlier Word versions where the Liberation
+Mono font may not be available. In LaTeX, the ‘url’
+package is used with its default font now being switched to 
+``newtxtt'' which offers a better distinction between 
+``\texttt{O}'' and ``\texttt{0}''. The conference
 paper ID is optional and may be included in the absence
 of a DOI to facilitate a search through internet search
 engines. DOIs have been assigned to all JACoW
@@ -113,10 +122,11 @@ conference should be written as shown in [5]; the wording
 The IEEE style is also shown for periodicals [6-11],
 online sources [12], books [13, 14], internal reports [15],
 theses [16], manuals or handbooks [17], patents [18] and
-unpublished material [19, 20]. Examples of correctly
-formatted references can also be found at the JACoW website,
-under ‘Formatting Citations’ which is reached through the
-‘for Authors’ link.
+unpublished material [19, 20]. When citing a periodical,
+only the official abbreviation of the journal should be used
+[21]. Examples of correctly formatted references can also be 
+found at the JACoW website, under ‘Formatting Citations’ which 
+is reached through the ‘for Authors’ link.
 
 \subsection{Alignment of References}
 
@@ -147,25 +157,24 @@ references is ten or more.
 	
 	\bibitem{item:1-1}
 	A.~Alpha and B.~T.~Beta, “Novel techniques for future TeV electron accelerators”,
-	in \textit{Proc. 8th Int. Particle Accelerator Conf. (IPAC’17)},
-	Copenhagen, Denmark, May 2017, 
-	pp. 567-569, \url{doi:10.18429/JACoW-IPAC2017-PAPERID}
+	in \textit{Proc.\ 9th Int.\ Particle Accelerator Conf.\ (IPAC’18)},
+	Vancouver, BC, Canada, Apr.-May 2018.
+	pp. 567-569. \url{doi:10.18429/JACoW-IPAC2017-PAPERID}
 	\CCom{jgreen}{Conference Proceedings, two authors; DOI encouraged}
 
 	\bibitem{item:1-2}
 	A.~Alpha \emph{et al.},
-	“A new 12\,GHz electron linear accelerator”,
-	in \emph{Proc. 28th Linear Accelerator Conf. (LINAC’16)},
-	East Lansing, MI, USA, Sep. 2016, pp. 27-31, \newline
-	\url{doi:10.18429/JACoW-LINAC2016-PAPERID}
+	“A novel injector”, in \emph{Proc.\ 29th Linear Accelerator Conf.\ (LINAC’18)},
+	Shanghai, China, Sep.\ 2018, pp.\ 27-31. %\newline
+	\url{doi:10.18429/JACoW-LINAC2018-PAPERID}
 	\CCom{jgreen}{Conference Proceedings, for six or more authors use \emph{et al.};	
 		 DOI encouraged}
 	
 	\bibitem{item:1-3}	
 	A.~Alpha, B.~T.~Beta, C.~Gamma, and D.~Delta,
 	“An overview of control systems”,
-	in \emph{Proc. 13th Int. Conf. on Accelerator and Large Experimental Physics Control Systems (ICALEPCS’11)}, Grenoble, France, Oct. 2011,
-	paper TUP014, pp. 89--91.
+	in \emph{Proc.\ 13th Int.\ Conf.\ on Accelerator and Large Experimental Physics Control Systems (ICALEPCS’11)}, Grenoble, France, Oct.\ 2011,
+	paper TUP014, pp.\ 89--91.
 	\CCom{jgreen}{Conference Proceedings, four authors; optional paper ID
 	in the absence of a DOI}
 \end{thebibliography}
@@ -176,25 +185,23 @@ references is ten or more.
 \begin{thebibliography}{9} % Use for 1-9 references
 	\bibitem{item:2-1}
 	A.~Alpha and B.~T.~Beta, “Novel techniques for future TeV electron accelerators”,
-	in \textit{Proc. IPAC’17}, Copenhagen, Denmark, May 2017, 
-	pp. 567-569, \newline
-	\url{doi:10.18429/JACoW-IPAC2017-PAPERID}
+	in \textit{Proc.\ IPAC’18}, 	Vancouver, BC, Canada, Apr.-May 2018,
+	pp.\ 567-569. %\newline
+	\url{doi:10.18429/JACoW-IPAC2018-PAPERID}
 	\CCom{jgreen}{Conference Proceedings, two authors; DOI encouraged}
 	
 	\bibitem{item:2-2}
 	A.~Alpha \emph{et al.},
-	“A new 12\,GHz electron linear accelerator”,
-	in \emph{Proc. LINAC’16},
-	East Lansing, MI, USA, Sep. 2016, pp.\,27-31, 
-	\url{doi:10.18429/JACoW-LINAC2016-PAPERID}
-	\CCom{jgreen}{Conference Proceedings, for six or more authors use \emph{et al.};	
-		 		  DOI encouraged}
+	“A novel injector”, in \emph{Proc.\ LINAC’18},
+	Shanghai, China, Sep.\ 2018, pp.\ 27-31. %\newline
+	\url{doi:10.18429/JACoW-LINAC2018-PAPERID}
+	\CCom{jgreen}{Conference Proceedings, for six or more authors use \emph{et al.}; DOI encouraged}
 	
 	\bibitem{item:2-3}	
 	A.~Alpha, B.~T.~Beta, C.~Gamma, and D.~Delta,
 	“An overview of control systems”,
-	in \emph{Proc. ICALEPCS’11}, Grenoble, France, Oct. 2011,
-	paper TUP014, pp. 89--91.
+	in \emph{Proc.\ ICALEPCS’11}, Grenoble, France, Oct.\ 2011,
+	paper TUP014, pp.\ 89--91.
 	\CCom{jgreen}{Conference Proceedings, four authors; optional paper ID
 				  in the absence of a DOI}
 \end{thebibliography}
@@ -208,8 +215,8 @@ references is ten or more.
  \bibitem{item:41}
 	A.~Alpha and B.~T.~Beta,
 	“An interesting talk but paper not submitted”,
-	presented at the 5th Int. Particle Accelerator Conf. (IPAC’14),
-	Dresden, Germany, Jun. 2014, paper MOAX01, unpublished.
+	presented at the 5th Int.\ Particle Accelerator Conf.\ (IPAC’14),
+	Dresden, Germany, Jun.\ 2014, paper MOAX01, unpublished.
 	\CCom{jred}{Unpublished paper; conference name in normal font; paper
 	ID may only be given if material supplementing the proceedings
 	exists on the JACoW website, e.\,g., PDF of talk}
@@ -223,7 +230,7 @@ references is ten or more.
 	A.~Alpha and B.~T.~Beta,
 	“An interesting talk but paper not submitted”,
 	presented at IPAC’14,
-	Dresden, Germany, Jun. 2014, paper MOAX01, unpublished.
+	Dresden, Germany, Jun.\ 2014, paper MOAX01, unpublished.
 	\CCom{jred}{Unpublished paper; conference name in normal font; paper
 	ID may only be given if material supplementing the proceedings
 	exists on the JACoW website, e.\,g., PDF of talk}
@@ -239,8 +246,8 @@ references is ten or more.
  \bibitem{item:51}
 	A.~Alpha and B.~T.~Beta,
 	“An interesting talk at this conference”,
-	presented at the 9th Int. Particle Accelerator
-	Conf. (IPAC’18), Vancouver, Canada, Apr.-May 2018, 
+	presented at the 10th Int.\ Particle Accelerator
+	Conf.\ (IPAC’19), Melbourne, Australia, May 2019, 
 	paper MOAB01, this conference.
 	\CCom{jgrepc}{Current conference; conference name in normal font; 
 				  the wording “this conference” is optional}
@@ -252,7 +259,7 @@ references is ten or more.
 \setcounter{enumi}{4}
 	\bibitem{item:52}
 	“An interesting talk at this conference”,
-	presented at IPAC’18, Vancouver, Canada, Apr.-May 2018, 
+	presented at IPAC’19, Melbourne, Australia, May 2019, 
 	paper MOAB01, this conference.
 	\CCom{jgrepc}{Current conference; conference name in normal font; 
 				  the wording “this conference” is optional}
@@ -267,39 +274,39 @@ references is ten or more.
 	\bibitem{item:6}
 		P.~Mercury \emph{et al.},
 		“Title of paper published in journal”,
-		\emph{Phy.~Rev.~	Lett.}, vol. 114, no. 5,
-		p. 050511, Feb. 2014,
+		\emph{Phy.\ Rev.\ Lett.}, vol.\ 114, no.\ 5,
+		p.\ 050511, Feb.\ 2014.
 		\url{doi:10.1103/PhysRevLett.114.050511}
-	\CCom{jblue}{Periodical, Phys. Rev. Lett.;
-		             issue no. and month may be omitted}
+	\CCom{jblue}{Periodical, Phys.\ Rev.\ Lett.;
+		             issue no.\ and month may be omitted}
 
 	\bibitem{item:7}
 		P.~Venus \emph{et al.},
 		“New techniques in laser wakefield accelerators”,
-		\emph{Phys. Rev. ST Accel. Beams}, vol. 18,
-		p. 120198, Dec.~2015, \newline
+		\emph{Phys.\ Rev.\ ST Accel.\ Beams}, vol.\ 18,
+		p.\ 120198, Dec.~2015. %\newline
 		\url{doi:10.1103/PhysRevAccelBeams.18.120198} 
-	\CCom{jblue}{Periodical, Phys. Rev. ST Accel. Beams;
+	\CCom{jblue}{Periodical, Phys.\ Rev.\ ST Accel.\ Beams;
 			              month may be omitted}
 
 	\bibitem{item:8}
 		T.~Earth \emph{et al.},
 		“Low dose irradiation impact on modern silicon detectors”,
-		\emph{Nucl. Instr. Meth.}, vol. 692, pp. 256--280, 2014,
+		\emph{Nucl.\ Instr.\ Meth.}, vol.\ 692, pp.\ 256--280, 2014.
 		\url{doi:10.1016/j.nima.2014.11.022}
 	\CCom{jblue}{Periodical, Nucl. Instr. Method.}
 	
 	\bibitem{item:9}
 		T.~Earth, L.~Moon, and A.~Belt,
 		“Temporal correlations of x-ray free electron lasers”,
-		\emph{Optics Express}, vol. 20, pp. 11396--11404, 2012,
+		\emph{Optics Express}, vol.\ 20, pp.\ 11396--11404, 2012.
 		\url{doi:10.1364/OE.20.11396}
 	\CCom{jblue}{Periodical, Optics Express}
 
 	\bibitem{item:10}
 		J.~B.~Good,
 		“A paper accepted for publication”,
-		\emph{Phys. Rev. Lett.}, to be published.
+		\emph{Phys.\ Rev.\ Lett.}, to be published.
 	\CCom{jblue}{Periodical, paper accepted for publication
 		              by Phys. Rev. Lett.}
 
@@ -318,15 +325,13 @@ references is ten or more.
   \setcounter{enumi}{11}
 	\bibitem{item:121}
 		JACoW, \url{http://www.jacow.org} 
-		\CCom{jvio}{online source; no hyperlink, no period at end of URL unless there is a
-					trailing “/” as shown below. A monospace font should be used, this is
-					achieved using the ‘url’ package in \LaTeX}
+		\CCom{jvio}{online source; no hyperlink, no period at end of URL unless there is a trailing “/” as shown below. A monospaced font should be used, this is achieved using the ‘url’ package in \LaTeX}
 
   \setcounter{enumi}{11}
 	\bibitem{item:122}
 		JACoW, \url{http://www.jacow.org/}.  
-		\CCom{jvio}{online source; no hyperlink, period after traling “/” in
-					URL allowed. A monospace font should be used, this is
+		\CCom{jvio}{online source; no hyperlink, period after trailing “/” in URL
+					if optionally preferred. A monospaced font should be used, this is
 					achieved using the ‘url’ package in \LaTeX}
 
 \end{thebibliography}
@@ -338,8 +343,8 @@ references is ten or more.
 	\bibitem{item:13}
 		T.~Earth and L.~Moon,
 		“Title of chapter in the book”,
-		in \emph{Title of Book}, R Mars, Ed. New York, NY, USA:
-		Wiley, 1994, pp.~42--48. 
+		in \emph{Title of Book}, R Mars, Ed.\ New York, NY, USA:
+		Wiley, 1994, pp.\ 42--48. 
 	\CCom{jbook}{Chapter in book}
 	
 	\bibitem{item:14}
@@ -355,12 +360,12 @@ references is ten or more.
 	\bibitem{item:15}
 		G. Jupiter \emph{et al.},
 		“Title of report”, CERN, Geneva, Switzerland,
-		Rep. CERN-2012-333, Oct. 2012.
+		Rep.\ CERN-2012-333, Oct.\ 2012.
 	\CCom{jrept}{Report}
 
 	\bibitem{item:16}
 		A.~Student, “Title of thesis”,
-		Ph.D. thesis, Phys. Dept.,
+		Ph.D.\ thesis, Phys.\ Dept.,
 		Karlsruher Institut für Technologie, Karlsruhe,
 		Germany, 2014.
 	\CCom{jrept}{Thesis}
@@ -373,7 +378,7 @@ references is ten or more.
 	\bibitem{item:17}
 		\emph{IEEE Editorial Style Manual},
 		IEEE Periodicals,
-		Piscataway, NJ, USA, Oct. 2014, pp. 34-52;
+		Piscataway, NJ, USA, Oct.\ 2014, pp.\ 34-52;
 		\url{http://www.ieee.org/documents/style_manual.pdf} 
 	\CCom{jmanu}{Handbook/Manual, no hyperlink, no period after URL}
 \end{thebibliography}
@@ -385,7 +390,7 @@ references is ten or more.
 		\bibitem{item:18}
 		A.~N.~Inventor,
 		“Title of patent”,
-		Patent Authority and No., Jan. 20, 2016.
+		Patent Authority and No., Jan.\ 20, 2016.
 
 \end{thebibliography}
 
@@ -398,8 +403,18 @@ references is ten or more.
 	\CCom{junpu}{Unpublished}
 	
 	\bibitem{item:20}
-	P.~Uranus, private communication, Jun. 2015.
+	P.~Uranus, private communication, Jun.\ 2015.
 	\CCom{junpu}{Private communication}
+\end{thebibliography}
+
+\newpage
+
+\section{JOURNAL ABBREVIATIONS}
+
+\begin{thebibliography}{99} % Use for 1-9 references
+	\setcounter{enumi}{20}
+	\bibitem{item:21}
+		\url{https://woodward.library.ubc.ca/researchhelp/journal-abbreviations/}
 
 \end{thebibliography}
 
@@ -462,20 +477,27 @@ more lines:
 	Figure 2: A lengthy figure caption that spans
 	two lines is justified.
 \end{justify}
+
 Note the colon “:” after the figure number and the period
 “.” at the end of the caption.
-
 
 When referring to a figure from within the text, the
 convention is to use the abbreviated form, i.\,e., Fig.~1,
 \emph{unless} the reference to the figure is at the start of the sentence:
 \begin{quote}
-	Figure 1 shows a schematic view of...
+	Figure 1 shows a schematic view of\ldots
 	
-	... as shown in Fig.~1.
+	\ldots as shown in Fig.~1.
 \end{quote}
 
+% if set as \subsection, the title will appear at the top
+% of the column followed by "Table captions ... lines:", 
+% then follows the text above after the justify till end of quote
+\iffalse
 \subsection{Table Headings}
+\else
+\noindent\textit{\vspace{1em}\large Table Headings}
+\fi
 
 Table captions should be placed \emph{above} the table and
 centred if on one line, but justified if spanning two or
@@ -483,12 +505,13 @@ more lines:
 \begin{center}
 	Table 1: Table Heading
 \end{center}
+
 \begin{justify}
 	Table 2: A Particularly Long Table Heading
 	Spanning Two Lines
 \end{justify}
 
-Note the colon ":" after the table number, that the initial
+Note the colon “:” after the table number, that the initial
 letters of the principle words in the table heading are
 capitalized, and the absence of a period at the end of the
 caption.
@@ -506,7 +529,7 @@ placed flush with the right margin of the column.
 An unbreakable space should always precede a unit. In \LaTeX{} use
 a “\verb|\,|” or the ‘siunitx’ package to format units.
 Examples are:
-\SI{3}{keV}, \SI{4}{GeV}, \SI{100}{kW}, \SI{7}{µm}.
+\SI{3}{keV}, \SI{4}{GeV}, \SI{100}{kW}, \SI{7}{\micro m}.
 
 \subsection{References}
 
