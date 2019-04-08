@@ -22,23 +22,27 @@
 %% 
 %% This work consists of the following files
 %%    jacow.cls               this class file
-%%    LaTeX-A4-JACoW.tex      A4/letter templates to demonstrate the 
-%%    LaTeX-Letter-JACoW.tex  .. use and explain the various parameters
+%%    JACoW_LaTeX_A4.tex      A4/letter templates to demonstrate the 
+%%    JACoW_LaTeX_Letter.tex  .. use and explain the various parameters
 %%                            .. and settings for a submission to
 %%                            .. a JACoW conference proceedings
-%%    LaTeX-A4-JACoW.pdf      template in format A4 and European 
+%%    JACoW_LaTeX_A4.pdf      template in format A4 and European 
 %%                            settings (citation and hyphenation)
-%%    LaTeX-Letter-JACoW.pdf  template in format letter and American
+%%    JACoW_LaTeX_Letter.pdf  template in format letter and American
 %%                            setting (citation and hyphenation)
+%%    annexes-A4.tex          Annexes A-C which are included in "JACoW_LaTeX_A4.tex"
+%%    annexes-Letter.tex      Annexes A-C which are included in "JACoW_LaTeX_Letter.tex"
+%%
 %%    JACpic_mc.pdf           a graphic showing the JACoW page format
-%%    jacow8.jpg              a graphic for a full width figure and
+%%    JACpic2.jpg             a graphic for a full width figure and
 %%                            multiline caption
-%%    jacow-collaboration-2018.tex  an example title page showing the
-%%    jacow-collaboration-2018.pdf  JACoW Colloaboration, the responsible
-%%                                  editors for the various platform
+%%    jacow-collaboration.tex  an example title page showing the
+%%    jacow-collaboration.pdf  JACoW Colloaboration, the responsible
+%%                             editors for the various platform
 %%                            dependent templates (LaTeX, Word on PC and
 %%                            Mac, ODF). The PDF is included in the template
 %% 
+%
 %  v0.1 to 1.3 : JAC2000.cls
 %  Special thanks to John Jowett and Michel Goossens from CERN and
 %  Martin Comyn at TRIUMF for their significant contributions to
@@ -139,9 +143,15 @@
 % - font for tt switched to newtxtt with option zerostyle=d (dotted 0)
 %                                                  Volker RW Schaa, 15 Jan 2019
 %
-\def\fileversion{2.3}
-\def\filedate{2019/01/15}
-\def\docdate {2019/02/23}
+% v2.4
+% - version 2.3 did not work for XeTeX/LuaTeX, therefore font change using
+%   \def\UrlFont and switching the fontencoding to T1 (suggested by Ulrike Fischer)
+% - package amsmath included to provide 
+%                                                  Volker RW Schaa, 01 Apr 2019
+%
+\def\fileversion{2.4}
+\def\filedate{2019/04/01}
+\def\docdate {2019/04/01}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{jacow}[\filedate\space Version \fileversion]
@@ -184,7 +194,7 @@
 
 \ExecuteOptions{aca4}
 \ProcessOptions
-\RequirePackage{cmap}
+
 \RequirePackage{fix-cm}
 \LoadClass[10pt,twocolumn]{article}
 \RequirePackage[keeplastbox]{flushend} %% modified
@@ -218,6 +228,7 @@
 \RequirePackage{booktabs}
 \RequirePackage[figureposition=bottom,tableposition=top,skip=5pt]{caption}
 \RequirePackage{xcolor}
+\RequirePackage{amsmath}
 \AtEndPreamble{\RequirePackage[autostyle]{csquotes}}
 
 
@@ -242,6 +253,12 @@
 \pagestyle{empty}
 
 \RequirePackage{url}
+%
+% redefine the default Typewriter Font to newtxtt with dotted zeros (v2.3)
+%
+\RequirePackage[zerostyle=d]{newtxtt}
+\newcommand\urlZDtxt{\fontencoding{T1}\fontfamily{newtxtt}\selectfont}
+\def\UrlFont{\urlZDtxt}
 
 \ifboolexpr{bool{xetex} or bool{luatex}}
  {}
@@ -266,14 +283,12 @@
   \RequirePackage{lmodern}
   \RequirePackage{tgtermes}
   \RequirePackage{newtxmath}
-  \RequirePackage[zerostyle=d]{newtxtt}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+%  \RequirePackage{cmap}
  }
 
 \RequirePackage{microtype}
-%
-% redefine the default Typewriter Font to newtxtt with dotted zeros (v2.3)
-%
-\urlstyle{ttz}
 
 %Lists
 
